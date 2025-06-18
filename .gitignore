@@ -1,0 +1,7 @@
+work
+*.vcd
+*.exe
+*.wlf
+transcript
+project
+output_files
