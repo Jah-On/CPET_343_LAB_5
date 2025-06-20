@@ -13,6 +13,7 @@ use IEEE.numeric_std.all;
 
 entity seven_seg_display is
     port (
+        reset      : in  std_logic;
         bcd        : in  std_logic_vector(3 downto 0);
         ssd        : out std_logic_vector(6 downto 0)
     );
@@ -30,11 +31,10 @@ architecture converter of seven_seg_display is
     );
     constant BLANK : std_logic_vector(6 downto 0) := "1111111";    
 begin
-    set_display: process(bcd)
+    set_display: process(reset, bcd)
     begin
-        case bcd is
-            when "XXXX" => ssd <= BLANK;
-            when "UUUU" => ssd <= BLANK;
+        case reset is
+            when '1'    => ssd <= BLANK;
             when others => ssd <= BCD_SSD_MAP(to_integer(unsigned(bcd)));
         end case;
     end process set_display;
