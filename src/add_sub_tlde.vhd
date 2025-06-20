@@ -26,11 +26,11 @@ architecture tlde of add_sub_tlde is
             input_length : integer := 3 -- Default with 3 bit inputs
         );
         port (
-            a,   b   : in  std_logic_vector((input_length - 1) downto 0);
-            add, sub : in  std_logic;
-            sum      : out std_logic_vector(input_length downto 0);
-            clk      : in  std_logic;
-            reset    : in  std_logic
+            a,   b     : in  std_logic_vector((input_length - 1) downto 0);
+            op_a, op_s : in  std_logic;
+            sum        : out std_logic_vector(input_length downto 0);
+            clk        : in  std_logic;
+            reset      : in  std_logic
         );
     end component generic_add_sub;
 
@@ -68,8 +68,8 @@ begin
             reset => reset,
             a     => switch(7) & switch(6) & switch(5),
             b     => switch(4) & switch(3) & switch(2),
-            add   => p_btn,
-            sub   => m_btn,
+            op_a  => p_btn,
+            op_s  => m_btn,
             sum   => sum_signal
         );
 
