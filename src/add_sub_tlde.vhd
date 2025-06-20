@@ -36,7 +36,6 @@ architecture tlde of add_sub_tlde is
 
     component seven_seg_display is
         port (
-            clk, reset : in  std_logic;
             bcd        : in  std_logic_vector(3 downto 0);
             ssd        : out std_logic_vector(6 downto 0)
         );
@@ -48,16 +47,12 @@ architecture tlde of add_sub_tlde is
 begin    
     a_dsp : seven_seg_display
         port map (
-            clk   => clk,
-            reset => reset,
             bcd   => '0' & switch(5) & switch(4) & switch(3),
             ssd   => bcd_4
         );
 
     b_dsp : seven_seg_display
         port map (
-            clk   => clk,
-            reset => reset,
             bcd   => '0' & switch(2) & switch(1) & switch(0),
             ssd   => bcd_2
         );
@@ -75,8 +70,6 @@ begin
 
     sum_dsp : seven_seg_display
         port map (
-            clk   => clk,
-            reset => reset,
             bcd   => sum_signal,
             ssd   => bcd_0
         );
