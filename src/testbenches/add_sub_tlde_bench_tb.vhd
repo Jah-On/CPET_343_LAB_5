@@ -18,7 +18,7 @@ architecture stimuli of add_sub_tlde_bench is
     component add_sub_tlde is
         port (
             clk, reset          : in  std_logic;
-            switch              : in  std_logic_vector(7 downto 0);
+            switch              : in  std_logic_vector(5 downto 0);
             p_btn, m_btn        : in  std_logic;
             bcd_0, bcd_2, bcd_4 : out std_logic_vector(6 downto 0)
         );
@@ -27,7 +27,7 @@ architecture stimuli of add_sub_tlde_bench is
     constant tick : time := 10ns;
 
     signal clk, reset, p_btn, m_btn : std_logic := '1';
-    signal switch                   : std_logic_vector(7 downto 0);
+    signal switch                   : std_logic_vector(5 downto 0);
     signal done                     : std_logic := '0';
 begin
     clock_gen: process
@@ -58,10 +58,10 @@ begin
         m_btn <= '1';
         
         for a in 0 to 7 loop
-            switch(7 downto 5) <= std_logic_vector(to_unsigned(a, 3));
+            switch(5 downto 3) <= std_logic_vector(to_unsigned(a, 3));
 
             for b in 0 to 7 loop
-                switch(4 downto 2) <= std_logic_vector(to_unsigned(b, 3));
+                switch(2 downto 0) <= std_logic_vector(to_unsigned(b, 3));
 
                 wait until rising_edge(clk);
             end loop;
@@ -74,10 +74,10 @@ begin
         p_btn <= '1';
 
         for a in 0 to 7 loop
-            switch(7 downto 5) <= std_logic_vector(to_unsigned(a, 3));
+            switch(5 downto 3) <= std_logic_vector(to_unsigned(a, 3));
 
             for b in 0 to 7 loop
-                switch(4 downto 2) <= std_logic_vector(to_unsigned(b, 3));
+                switch(2 downto 0) <= std_logic_vector(to_unsigned(b, 3));
 
                 wait until rising_edge(clk);
             end loop;
@@ -86,10 +86,10 @@ begin
         p_btn <= '1';
 
         for a in 0 to 7 loop
-            switch(7 downto 5) <= std_logic_vector(to_unsigned(a, 3));
+            switch(5 downto 3) <= std_logic_vector(to_unsigned(a, 3));
 
             for b in 0 to 7 loop
-                switch(4 downto 2) <= std_logic_vector(to_unsigned(b, 3));
+                switch(2 downto 0) <= std_logic_vector(to_unsigned(b, 3));
 
                 wait until rising_edge(clk);
             end loop;
@@ -98,10 +98,10 @@ begin
         reset <= '1';
 
         for a in 0 to 7 loop
-            switch(7 downto 5) <= std_logic_vector(to_unsigned(a, 3));
+            switch(5 downto 3) <= std_logic_vector(to_unsigned(a, 3));
 
             for b in 0 to 7 loop
-                switch(4 downto 2) <= std_logic_vector(to_unsigned(b, 3));
+                switch(2 downto 0) <= std_logic_vector(to_unsigned(b, 3));
 
                 wait until rising_edge(clk);
             end loop;
