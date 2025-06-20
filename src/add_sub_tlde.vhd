@@ -14,7 +14,7 @@ use IEEE.numeric_std.all;
 entity add_sub_tlde is
     port (
         clk, reset          : in  std_logic;
-        switch              : in  std_logic_vector(7 downto 0);
+        switch              : in  std_logic_vector(5 downto 0);
         p_btn, m_btn        : in  std_logic;
         bcd_0, bcd_2, bcd_4 : out std_logic_vector(6 downto 0)
     );
@@ -50,7 +50,7 @@ begin
         port map (
             clk   => clk,
             reset => reset,
-            bcd   => '0' & switch(7) & switch(6) & switch(5),
+            bcd   => '0' & switch(5) & switch(4) & switch(3),
             ssd   => bcd_4
         );
 
@@ -58,7 +58,7 @@ begin
         port map (
             clk   => clk,
             reset => reset,
-            bcd   => '0' & switch(4) & switch(3) & switch(2),
+            bcd   => '0' & switch(2) & switch(1) & switch(0),
             ssd   => bcd_2
         );
     
@@ -66,8 +66,8 @@ begin
         port map (
             clk   => clk,
             reset => reset,
-            a     => switch(7) & switch(6) & switch(5),
-            b     => switch(4) & switch(3) & switch(2),
+            a     => switch(5) & switch(4) & switch(3),
+            b     => switch(2) & switch(1) & switch(0),
             op_a  => p_btn,
             op_s  => m_btn,
             sum   => sum_signal
