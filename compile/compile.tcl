@@ -1,4 +1,4 @@
-set project_name "Lab_4_TLDE"
+set project_name "Lab_5_TLDE"
 
 file delete -force ../project
 file delete -force ../output_files
@@ -17,22 +17,15 @@ set_global_assignment -name VHDL_FILE ../src/generic_add_sub.vhd
 set_global_assignment -name VHDL_FILE ../src/seven_seg_display.vhd
 set_global_assignment -name VHDL_FILE ../src/add_sub_tlde.vhd
 
-set_location_assignment PIN_W15  -to reset
+set_location_assignment PIN_AB12  -to reset
 set_location_assignment PIN_AF14 -to clk
 
-set_location_assignment PIN_V16  -to led[0]
-set_location_assignment PIN_W16  -to led[1]
-set_location_assignment PIN_V17  -to led[2]
-set_location_assignment PIN_V18  -to led[3]
-
-set_location_assignment PIN_AF9  -to switch[0]
-set_location_assignment PIN_AF10 -to switch[1]
-set_location_assignment PIN_AD11 -to switch[2]
-set_location_assignment PIN_AD12 -to switch[3]
-set_location_assignment PIN_AE11 -to switch[4]
-set_location_assignment PIN_AC9  -to switch[5]
-set_location_assignment PIN_AD10 -to switch[6]
-set_location_assignment PIN_AE12 -to switch[7]
+set_location_assignment PIN_AD11 -to switch[0]
+set_location_assignment PIN_AD12 -to switch[1]
+set_location_assignment PIN_AE11 -to switch[2]
+set_location_assignment PIN_AC9  -to switch[3]
+set_location_assignment PIN_AD10 -to switch[4]
+set_location_assignment PIN_AE12 -to switch[5]
 
 set_location_assignment PIN_AE26 -to bcd_0[0]
 set_location_assignment PIN_AE27 -to bcd_0[1]
