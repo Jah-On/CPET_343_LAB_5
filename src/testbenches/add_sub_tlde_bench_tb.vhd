@@ -26,7 +26,7 @@ architecture stimuli of add_sub_tlde_bench is
 
     constant tick : time := 10ns;
 
-    signal clk, reset, p_btn, m_btn : std_logic := '0';
+    signal clk, reset, p_btn, m_btn : std_logic := '1';
     signal switch                   : std_logic_vector(7 downto 0);
     signal done                     : std_logic := '0';
 begin
@@ -42,6 +42,21 @@ begin
     
     stim_inputs: process
     begin
+        reset <= '1';
+        for a in 0 to 7 loop
+            wait until rising_edge(clk);
+        end loop;
+        reset <= '0';
+        for a in 0 to 7 loop
+            wait until rising_edge(clk);
+        end loop;
+
+        m_btn <= '0';
+        for a in 0 to 3 loop
+            wait until rising_edge(clk);
+        end loop;
+        m_btn <= '1';
+        
         for a in 0 to 7 loop
             switch(7 downto 5) <= std_logic_vector(to_unsigned(a, 3));
 
@@ -52,7 +67,11 @@ begin
             end loop;
         end loop;
 
-        m_btn <= '1';
+        p_btn <= '0';
+        for a in 0 to 3 loop
+            wait until rising_edge(clk);
+        end loop;
+        p_btn <= '1';
 
         for a in 0 to 7 loop
             switch(7 downto 5) <= std_logic_vector(to_unsigned(a, 3));
